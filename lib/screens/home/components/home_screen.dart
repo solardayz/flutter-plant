@@ -1,53 +1,101 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_plants/constants.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: body(size, context),
+    );
+  }
 
-    return SingleChildScrollView(
+  Container body(Size size, BuildContext context) {
+    return Container(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Header(size, context),
+          titileWithMoreButton(),
         ],
       ),
     );
   }
 
-  Widget Header(Size size, BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: kDefaultPadding * 2.5),
-      height: size.height * 0.2,
-      child: Container(
-        padding: EdgeInsets.only(
-          left: kDefaultPadding,
-          right: kDefaultPadding,
-          bottom: kDefaultPadding,
-        ),
-        height: size.height * 0.2,
-        decoration: BoxDecoration(
-          color: kPrimaryColor,
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(36),
-            bottomRight: Radius.circular(36),
+  Row titileWithMoreButton() {
+    return Row(
+      children: [
+        Container(
+          height: 24,
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: kDefaultPadding / 4),
+                child: Text(
+                  'Recomended',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  margin: EdgeInsets.only(right: kDefaultPadding / 4),
+                  height: 7,
+                  color: kPrimaryColor.withOpacity(0.2),
+                ),
+              )
+            ],
           ),
         ),
-        child: Row(
-          children: [
-            Text(
-              'Hi Uishopy!',
-              style: Theme.of(context)
-                  .textTheme
-                  .headline5!
-                  .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+        Spacer(),
+        TextButton(
+          onPressed: () {},
+          child: Text(
+            'More',
+            style: TextStyle(
+              color: Colors.white,
+              backgroundColor: kPrimaryColor,
             ),
-            // Image.asset("assets/images/logo.png")
-          ],
+          ),
         ),
+      ],
+    );
+  }
+
+  Container Header(Size size, BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(
+        left: kDefaultPadding,
+        right: kDefaultPadding,
+        bottom: kDefaultPadding,
+      ),
+      height: size.height * 0.2,
+      decoration: BoxDecoration(
+        color: kPrimaryColor,
+        borderRadius: BorderRadius.only(
+          bottomLeft: Radius.circular(36),
+          bottomRight: Radius.circular(36),
+        ),
+      ),
+      child: Row(
+        children: [
+          Text(
+            'Hi Unishopy!',
+            style: Theme.of(context).textTheme.headline5!.copyWith(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
+          ),
+          Spacer(),
+          Image.asset("assets/images/logo.png")
+        ],
       ),
     );
   }
