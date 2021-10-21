@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../constants.dart';
 
 class TitleWithMoreButton extends StatelessWidget {
-  const TitleWithMoreButton({
-    Key? key,
-  }) : super(key: key);
+  const TitleWithMoreButton(
+      {Key? key, required this.title, required this.press})
+      : super(key: key);
+  final String title;
+  final Function press;
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +15,9 @@ class TitleWithMoreButton extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
       child: Row(
         children: [
-          TitleWithCustomerUnderline(),
+          TitleWithCustomerUnderline(
+            text: title,
+          ),
           Spacer(),
           TextButton(
             onPressed: () {
@@ -41,7 +45,10 @@ class TitleWithMoreButton extends StatelessWidget {
 class TitleWithCustomerUnderline extends StatelessWidget {
   const TitleWithCustomerUnderline({
     Key? key,
+    required this.text,
   }) : super(key: key);
+
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +60,7 @@ class TitleWithCustomerUnderline extends StatelessWidget {
             padding: const EdgeInsets.only(left: kDefaultPadding / 4),
             child: Container(
               child: Text(
-                "Recomended",
+                "$text",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
