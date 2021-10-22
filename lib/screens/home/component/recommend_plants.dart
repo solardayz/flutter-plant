@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_plants/screens/details/detail_screen.dart';
 
 import '../../../constants.dart';
 
@@ -22,23 +23,33 @@ class RecomendPlants extends StatelessWidget {
             title: "Samantha",
             country: "Russia",
             price: 400,
-            press: () {},
+            press: () {
+              print("image_1");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DetailScreen()),
+              );
+            },
           ),
           RecommandPlantCard(
             size: size,
             image: "assets/images/image_2.png",
             title: "Angelica",
             country: "Russia",
-            price: 400,
-            press: () {},
+            price: 420,
+            press: () {
+              print("image_2");
+            },
           ),
           RecommandPlantCard(
             size: size,
             image: "assets/images/image_3.png",
             title: "Samantha",
             country: "Russia",
-            price: 400,
-            press: () {},
+            price: 450,
+            press: () {
+              print("image_3");
+            },
           ),
         ],
       ),
@@ -60,7 +71,7 @@ class RecommandPlantCard extends StatelessWidget {
   final Size size;
   final String image, title, country;
   final int price;
-  final Function press;
+  final Function()? press;
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +86,7 @@ class RecommandPlantCard extends StatelessWidget {
           Image.asset('$image'),
           GestureDetector(
             onTap: () {
-              print("GestureDetector");
+              print("23423424234234");
             },
             child: Container(
               padding: const EdgeInsets.all(kDefaultPadding / 2),

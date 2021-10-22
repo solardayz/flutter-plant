@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_plants/screens/details/detail_screen.dart';
 
 import '../../../constants.dart';
 
@@ -15,11 +16,23 @@ class FeaturedPlants extends StatelessWidget {
         children: [
           FeaturePlantCard(
             image: "assets/images/bottom_img_1.png",
-            press: () {},
+            press: () {
+              print("image_1");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DetailScreen()),
+              );
+            },
           ),
           FeaturePlantCard(
             image: "assets/images/bottom_img_2.png",
-            press: () {},
+            press: () {
+              print("image_1");
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DetailScreen()),
+              );
+            },
           ),
         ],
       ),
@@ -35,13 +48,13 @@ class FeaturePlantCard extends StatelessWidget {
   }) : super(key: key);
 
   final String image;
-  final Function press;
+  final Function()? press;
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return GestureDetector(
-      onTap: () {},
+      onTap: press,
       child: Container(
         margin: EdgeInsets.only(
           left: kDefaultPadding,
