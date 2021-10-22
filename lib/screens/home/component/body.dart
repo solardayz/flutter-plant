@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_plants/constants.dart';
+import 'package:flutter_plants/screens/home/component/featured_plants.dart';
 import 'package:flutter_plants/screens/home/component/header.dart';
 import 'package:flutter_plants/screens/home/component/recommend_plants.dart';
 import 'package:flutter_plants/screens/home/component/title_with_more_button.dart';
@@ -22,7 +22,7 @@ class Body extends StatelessWidget {
           TitleWithMoreButton(title: "Recomended", press: () {}),
           RecomendPlants(size: size),
           TitleWithMoreButton(title: "Featured Plants", press: () {}),
-          RecomendPlants(size: size),
+          FeaturedPlants(),
         ],
       ),
     );
